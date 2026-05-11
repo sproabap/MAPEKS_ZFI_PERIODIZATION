@@ -1,0 +1,5 @@
+@MappingRole: true
+define role ZFI_I_OBJTYPEITEM {
+  grant select on ZFI_I_OBJTYPEITEM
+  where INHERITING CONDITIONS FROM ENTITY ZFI_I_OBJTYPEHEADER;
+}

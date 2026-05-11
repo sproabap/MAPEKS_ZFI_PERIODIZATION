@@ -1,0 +1,35 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "Dönemselleştirme - Nesne Oluşturma",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Dönemselleştirme - Nesne Oluşturma"
+  },
+  "ui5AppDetails": {
+    "appId": "zfiperiodization.zfiperiodization"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_DC0FAB751BF638C6EE4FAE22B9604F9EF49AF7C9_TM",
+    "semanticObject": "zfi_periodization",
+    "action": "maintenance",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_DC0FAB751BF638C6EE4FAE22B9604F9EF49AF7C9_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Dönemselleştirme - Nesne Oluşturma",
+        "subtitle": "Dönemselleştirme - Nesne Oluşturma"
+      }
+    }
+  ]
+}

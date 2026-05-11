@@ -1,0 +1,69 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+    typeName: 'Simülasyon',
+    typeNamePlural: 'Simülasyon',
+    title: { type: #STANDARD, label: 'Simülasyon' }
+}
+annotate entity ZFI_I_PERIOD_S with
+{
+  @UI.lineItem     : [{ type: #FOR_ACTION, dataAction: 'reverse', label: 'Ters Kayıt' }]
+  @UI.facet: [{
+    label: 'Detay',
+    id: 'Detail',
+    type: #IDENTIFICATION_REFERENCE,
+    position: 10,
+    targetQualifier: 'Detail'
+  }]
+  @UI.hidden: true
+  HeaderUuid;
+  @UI.hidden: true
+  ItemUuid;
+  @UI.hidden: true
+  SimulateUuid;
+  @UI.hidden: true
+  HeaderObjectType;
+  @UI.hidden: true
+  StartCalcDate;
+  @UI.hidden: true
+  EndCalcDate;
+  @UI                    : {  lineItem:       [ { position: 10 } ],
+                              identification: [ { position: 10 } ] }
+  StartShowDate;
+  @UI                    : {  lineItem:       [ { position: 20 } ],
+                              identification: [ { position: 20 } ] }
+  EndShowDate;
+  @UI                    : {  lineItem:       [ { position: 30, label: 'İşlem PB Bakiye Tutarı' } ],
+                              identification: [ { position: 30, label: 'İşlem PB Bakiye Tutarı' } ] }
+  BalanceAmount;
+  @UI                    : {  lineItem:       [ { position: 35, label: 'İşlem PB Dönemselleştirme Tutarı' } ],
+                              identification: [ { position: 35, label: 'İşlem PB Dönemselleştirme Tutarı' } ] }
+  PeriodAmount;
+  @UI                    : {  lineItem:       [ { position: 40, label: 'İşlem PB Kalan Tutar' } ],
+                              identification: [ { position: 40, label: 'İşlem PB Kalan Tutar' } ] }
+  RemainingAmount;
+  @UI                    : {  lineItem:       [ { position: 45, label: 'UPB Dönemselleştirme Tutarı' } ],
+                              identification: [ { position: 45, label: 'UPB Dönemselleştirme Tutarı' } ] }
+  NcAmount;
+  @UI.hidden: true
+  CurrencyCode;
+  @UI.hidden: true  
+  NcCurrency; 
+  @UI                    : {  lineItem:       [ { position: 50 } ],
+                              identification: [ { position: 50 } ] }
+  DocumentNumber;
+  @UI                    : {  lineItem:       [ { position: 60 } ],
+                              identification: [ { position: 60 } ] }
+  DocumentYear;
+  @UI.hidden: true
+  SimulateComp;
+  @UI.hidden: true
+  SimulateValid;
+  @UI.hidden: true
+  NcFlag;  
+  @UI.hidden: true
+  LocalLastChangedAt;
+  @UI.hidden: false
+  _PeriodHeader;
+  @UI.hidden: false
+  _PeriodItem;
+}

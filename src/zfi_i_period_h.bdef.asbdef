@@ -1,0 +1,177 @@
+//managed implementation in class zbp_fi_period unique;
+unmanaged implementation in class zbp_fi_period unique;
+strict;
+with draft;
+
+define behavior for ZFI_I_PERIOD_H alias Header
+//with unmanaged save
+draft table zfi_t_per_h_dt
+lock master
+total etag LocalLastChangedAt
+authorization master ( instance )
+etag master LocalLastChangedAt
+{
+  create;
+  update ( features : instance );
+  delete ( features : global );
+  field ( numbering : managed, readonly ) HeaderUuid;
+  field ( readonly : update, mandatory : create ) HeaderObjectType;
+  field ( features : instance ) CompanyCode, Supplier, HeaderText;
+  field ( readonly ) CreateIndicator, Status, StatusCriticality, StatusText, ObjectNumber;
+
+  action ( features : instance ) startObject result[1] $self;
+  action ( features : instance ) stopObject result[1] $self;
+  action ( features : instance ) cancelObject result[1] $self;
+
+  draft action Resume;
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+
+  draft determine action Prepare
+  {
+    validation validateCreateHeader;
+    validation validateHeaderText;
+    validation Item~validateAmount;
+    validation Item~validateCostAcc;
+    validation Item~validateMainAcc;
+    validation Item~validateItemType;
+    validation Item~validateCurrency;
+    validation Item~validateCostCenter;
+    validation Item~validateWbsElement;
+    validation Item~validateStartDate;
+    validation Item~validateEndDate;
+    validation Item~validateNtdeAcc;
+    validation Item~validateDocumentType;
+    validation Item~validateDayCalc;
+    validation Item~validateMonthCalc;
+  }
+
+  validation validateCreateHeader on save { field HeaderObjectType; create; }
+  validation validateHeaderText on save { field HeaderText; create; update; }
+  determination headerDefaultValue on modify { create; update; }
+
+  mapping for zfi_t_period_h control zfi_s_cntrl_per_h corresponding
+    {
+      HeaderUuid         = header_uuid;
+      CompanyCode        = company_code;
+      Supplier           = supplier;
+      HeaderObjectType   = header_object_type;
+      HeaderText         = header_text;
+      LocalLastChangedAt = local_last_changed_at;
+      Status             = status;
+      ObjectNumber       = object_number;
+    }
+
+  association _PeriodItem { create; with draft; }
+}
+
+define behavior for ZFI_I_PERIOD_I alias Item
+//with unmanaged save
+draft table zfi_t_per_i_dt
+lock dependent by _PeriodHeader
+authorization master ( instance )
+{
+  update ( features : instance );
+  delete ( features : global );
+  field ( numbering : managed, readonly ) ItemUuid;
+  field ( readonly ) HeaderUuid, HeaderObjectType;
+  field ( features : instance ) Amount, CostAccount, CostCenter, CurrencyCode, EndDate, ItemObjectType,
+  MainAccount, NtdeAccount, StartDate, VehicleFlag, WbsElement, MonthFlag, DocumentType, DayFlag, RateFlag;
+  field ( readonly ) ItemCreateIndicator, ItemStatus, ItemStatusCriticality, ItemStatusText, BillExtraFlag, BillNumber, BillYear;
+
+  action ( features : instance ) createBill parameter zfi_i_period_bill result[1] $self { default function GetDefaultsForBill; }
+  action ( features : instance ) reverseBill result[1] $self;
+
+  determination determineCreateBill on save { field BillExtraFlag; }
+
+  determination determineNtdeAcc on modify { field VehicleFlag; }
+  determination determineCurrency on modify { field RateFlag; }
+  determination determineRateFlag on modify { field CurrencyCode; }
+  determination determineCostAcc on modify { field ItemObjectType; }
+  determination determineDayCalc on modify { field MonthFlag; }
+  determination determineMonthCalc on modify { field DayFlag; }
+  determination itemDefaultValue on modify { create; update; }
+
+  side effects
+  {
+    field VehicleFlag affects $self;
+    field MonthFlag affects $self;
+    field DayFlag affects $self;
+    field RateFlag affects entity _PeriodSimulation, $self;
+    field Amount affects entity _PeriodSimulation;
+    field CurrencyCode affects entity _PeriodSimulation, $self;
+    field StartDate affects entity _PeriodSimulation;
+    field EndDate affects entity _PeriodSimulation;
+    field ItemObjectType affects field CostAccount, field MainAccount, field DocumentType;
+//    action simulateItem affects entity _PeriodHeader, $self;
+  }
+
+  validation validateAmount on save { field Amount; create; update; }
+  validation validateCostAcc on save { field CostAccount; create; update; }
+  validation validateMainAcc on save { field MainAccount; create; update; }
+  validation validateItemType on save { field ItemObjectType; create; update; }
+  validation validateCurrency on save { field CurrencyCode; create; update; }
+  validation validateCostCenter on save { field CostCenter; create; update; }
+  validation validateWbsElement on save { field WbsElement; create; update; }
+  validation validateDocumentType on save { field DocumentType; create; update; }
+  validation validateStartDate on save { field StartDate; create; update; }
+  validation validateEndDate on save { field EndDate; create; update; }
+  validation validateNtdeAcc on save { field NtdeAccount; create; update; }
+  validation validateDayCalc on save { field DayFlag; create; update; }
+  validation validateMonthCalc on save { field MonthFlag; create; update; }
+
+  mapping for zfi_t_period_i control zfi_s_cntrl_per_i corresponding
+    {
+      HeaderUuid         = header_uuid;
+      ItemUuid           = item_uuid;
+      HeaderObjectType   = header_object_type;
+      ItemObjectType     = item_object_type;
+      Amount             = amount;
+      CurrencyCode       = currency_code;
+      StartDate          = start_date;
+      EndDate            = end_date;
+      CostCenter         = cost_center;
+      WbsElement         = wbs_element;
+      MainAccount        = main_account;
+      CostAccount        = cost_account;
+      DocumentType       = document_type;
+      VehicleFlag        = vehicle_flag;
+      NtdeAccount        = ntde_account;
+      DayFlag            = day_flag;
+      MonthFlag          = month_flag;
+      BillNumber         = bill_number;
+      BillYear           = bill_year;
+      BillExtraFlag      = bill_extra_flag;
+      RateFlag           = rate_flag;
+      ItemStatus         = item_status;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+
+  association _PeriodHeader { with draft; }
+  association _PeriodSimulation { create ( features : instance ); with draft; }
+}
+
+define behavior for ZFI_I_PERIOD_S alias Simulation
+//with unmanaged save
+draft table zfi_t_per_s_dt
+lock dependent by _PeriodHeader
+authorization master ( instance )
+{
+  update ( features : global );
+  delete ( features : global );
+
+  side effects
+  {
+    action reverse affects $self, entity _PeriodItem;
+  }
+
+  action ( features : instance ) reverse;
+
+  field ( numbering : managed, readonly ) SimulateUuid;
+  field ( readonly ) HeaderUuid, ItemUuid, HeaderObjectType, BalanceAmount, CurrencyCode, DocumentNumber,
+                     DocumentYear, EndCalcDate, PeriodAmount, RemainingAmount, StartCalcDate, EndShowDate,
+                     StartShowDate, NcAmount;
+  association _PeriodHeader { with draft; }
+  association _PeriodItem { with draft; }
+}

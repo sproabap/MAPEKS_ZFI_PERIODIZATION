@@ -1,0 +1,11 @@
+unmanaged implementation in class zbp_fi_i_period_record unique;
+strict;
+
+define behavior for ZFI_I_PERIOD_RECORD alias PeriodRecord
+lock master
+authorization master ( instance )
+{
+  field ( readonly ) HeaderUuid, HeaderObjectType, ItemUuid, SimulateUuid, KeyDate;
+  action ( features : instance ) accounting;
+  action ( features : instance ) reverse;
+}

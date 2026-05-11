@@ -1,0 +1,128 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+    typeName: 'Kalem',
+    typeNamePlural: 'Kalem',
+    title: { type: #STANDARD, label: 'Kalem', value: 'ItemObjectType' },
+    description: { type: #STANDARD, value: 'CostCenter' }
+}
+@UI.presentationVariant: [{requestAtLeast: [ 'BillExtraFlag' ]}]
+annotate entity ZFI_I_PERIOD_I with
+{
+  @UI.identification: [{ type: #FOR_ACTION, dataAction: 'createBill', label: 'Fatura Kaydı' },
+                       { type: #FOR_ACTION, dataAction: 'reverseBill', label: 'Fatura İptal' } ]
+    
+  @UI.facet: [{
+    label: 'Genel Veriler',
+    id: 'GeneralInfo',
+    type: #IDENTIFICATION_REFERENCE,
+    position: 10,
+    targetQualifier: 'GeneralInfo'
+  },
+  {
+    label: 'Hesap Tayinleri',
+    id: 'AccountAssignment',
+    type: #IDENTIFICATION_REFERENCE,
+    position: 20,
+    targetQualifier: 'AccountAssignment'
+  },
+  {
+    label: 'Ek Özellikler',
+    id: 'AdditionalOptions',
+    type: #IDENTIFICATION_REFERENCE,
+    position: 30,
+    targetQualifier: 'AdditionalOptions'
+  },
+  {
+    id: 'PeriodSimulation',
+    purpose: #STANDARD,
+    type: #LINEITEM_REFERENCE,
+    label: 'Simülasyon',
+    position: 40,
+    targetElement: '_PeriodSimulation'
+  }]
+
+  @UI.hidden: true
+  HeaderUuid;
+  @UI.hidden: true
+  ItemUuid;
+  @UI.hidden: true
+  HeaderObjectType;
+  @UI                    : {  lineItem:       [ { position: 10 } ],
+                              identification: [ { position: 10, qualifier: 'GeneralInfo' } ] }
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZFI_I_OBJ_TYPE_I', element: 'ItemObjectType'},
+                                       additionalBinding: [{ localElement: 'HeaderObjectType', element: 'HeaderObjectType', usage: #FILTER }] }]
+  ItemObjectType;
+  @UI                    : {  lineItem:       [ { position: 20 } ],
+                              identification: [ { position: 20, qualifier: 'GeneralInfo' } ] }
+  Amount;
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'I_CurrencyStdVH', element: 'Currency'} }]
+  CurrencyCode;
+  @UI                    : {  lineItem:       [ { position: 30 } ],
+                              identification: [ { position: 30, qualifier: 'GeneralInfo' } ] }
+  StartDate;
+  @UI                    : {  lineItem:       [ { position: 40 } ],
+                              identification: [ { position: 40, qualifier: 'GeneralInfo' } ] }
+  EndDate;
+  @UI                    : {  lineItem:       [ { position: 41, label: '360 Günlük Hesaplama ( Aylık )' } ],
+                              identification: [ { position: 41, label: '360 Günlük Hesaplama ( Aylık )', qualifier: 'GeneralInfo' } ] }
+  MonthFlag;
+  @UI                    : {  lineItem:       [ { position: 42, label: '365 Günlük Hesaplama ( Günlük )' } ],
+                              identification: [ { position: 42, label: '365 Günlük Hesaplama ( Günlük )', qualifier: 'GeneralInfo' } ] }
+  DayFlag;
+  @UI                    : {  lineItem:       [ { hidden: true } ],
+                              identification: [ { position: 43,hidden : #(ItemCreateIndicator), label: 'Fatura Belgesi', qualifier: 'GeneralInfo' } ] }
+  BillNumber;
+  @UI                    : {  lineItem:       [ { hidden: true } ],
+                              identification: [ { position: 44,hidden : #(ItemCreateIndicator), label: 'Fatura Yılı', qualifier: 'GeneralInfo' } ] }
+  BillYear;
+  @UI                    : {  lineItem:       [ { position: 50 } ],
+                              identification: [ { position: 50, qualifier: 'AccountAssignment' } ] }
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'I_COSTCENTERSTDVH', element: 'CostCenter'} }]
+  CostCenter;
+  @UI                    : {  lineItem:       [ { position: 60 } ],
+                              identification: [ { position: 60, qualifier: 'AccountAssignment' } ] }
+  WbsElement;
+  @UI                    : {  lineItem:       [ { position: 70, label: 'Ana Hesap' } ],
+                              identification: [ { position: 70, label: 'Ana Hesap', qualifier: 'AccountAssignment' } ] }
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZFI_I_GLACCOUNT', element: 'GLAccount'} }]
+  MainAccount;
+  @UI                    : {  lineItem:       [ { position: 80, label: 'Gider Hesabı' } ],
+                              identification: [ { position: 80, label: 'Gider Hesabı', qualifier: 'AccountAssignment' } ] }
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZFI_I_GLACCOUNT', element: 'GLAccount'} }]
+  CostAccount;
+  @UI                    : {  lineItem:       [ { position: 85 } ],
+                              identification: [ { position: 85, qualifier: 'AccountAssignment' } ] }
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'I_AccountingDocumentType', element: 'AccountingDocumentType'} }]
+  DocumentType;
+  @UI                    : {  lineItem:       [ { position: 90, label: 'Binek Araç Gider Kısıtlaması' } ],
+                              identification: [ { position: 90, label: 'Binek Araç Gider Kısıtlaması', qualifier: 'AdditionalOptions' } ] }
+  VehicleFlag;
+  @UI                    : {  lineItem:       [ { position: 100, label: 'KKEG Hesabı' } ],
+                              identification: [ { position: 100, label: 'KKEG Hesabı', qualifier: 'AdditionalOptions' } ] }
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZFI_I_GLACCOUNT', element: 'GLAccount'} }]
+  NtdeAccount;
+  @UI                    : {  lineItem:       [ { position: 110, label: 'Dövizde Kur Farkı Olmasın' } ],
+                              identification: [ { position: 110, label: 'Dövizde Kur Farkı Olmasın', qualifier: 'AdditionalOptions' } ] }
+  RateFlag;
+  @UI.hidden: true
+  ItemStatus;
+  //  @UI                    : {  lineItem:       [ { position: 110, label: 'Statü', criticality: 'ItemStatusCriticality' , importance: #HIGH } ],
+  //                              identification: [ { position: 110, label: 'Statü', hidden : #(CreateIndicator) } ] }
+  //  @Consumption.filter.hidden : true
+  @UI.hidden: true
+  ItemStatusText;
+  @UI.hidden: true
+  BillExtraFlag;
+  @UI.hidden: true
+  ItemStatusCriticality;
+  @UI.hidden: true
+  ItemCreateIndicator;
+  @UI.hidden: true
+  LocalLastChangedAt;
+  @UI.hidden: true
+  _CostCenterText;
+  @UI.hidden: false
+  _PeriodHeader;
+  @UI.hidden: false
+  _PeriodSimulation;
+}

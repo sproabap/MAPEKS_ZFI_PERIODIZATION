@@ -1,0 +1,3 @@
+FUNCTION-POOL ZFI_FG_PERIODIZATION.         "MESSAGE-ID ..
+
+* INCLUDE LZFI_FG_PERIODIZATIOND...          " Local class definition

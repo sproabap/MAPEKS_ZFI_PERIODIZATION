@@ -1,0 +1,101 @@
+managed implementation in class ZBP_I_OBJTYPE_SNG unique;
+strict;
+with draft;
+define behavior for ZFI_I_OBJTYPE_SNG alias ObjectTypeSingleton
+draft table ZFI_T_OBJ_D_SNG
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master( global )
+{
+  field ( readonly )
+   ObjectTypeSingleton;
+
+  field ( notrigger )
+   ObjectTypeSingleton,
+   LastChangedAtMax;
+
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  association _ObjectTypeHeader { create ( features : instance ); with draft; }
+
+}
+
+define behavior for ZFI_I_OBJTYPEHEADER alias ObjectTypeHeader ##UNMAPPED_FIELD
+persistent table ZFI_T_OBJ_TYPE_H
+draft table ZFI_T_OBJ_TH_D
+lock dependent by _ObjectTypeSingleton
+authorization dependent by _ObjectTypeSingleton
+{
+  field ( mandatory : create )
+   HeaderObjectType;
+
+  field ( readonly )
+   ObjectTypeSingleton;
+
+  field ( readonly : update )
+   HeaderObjectType;
+
+  field ( notrigger )
+   ObjectTypeSingleton;
+
+
+  update( features : global );
+  delete( features : global );
+
+  mapping for ZFI_T_OBJ_TYPE_H
+  {
+    HeaderObjectType = HEADER_OBJECT_TYPE;
+    ObjectTypeText = OBJECT_TYPE_TEXT;
+    NumberRangeNo = NUMBER_RANGE_NO;
+  }
+
+  association _ObjectTypeSingleton { with draft; }
+  association _ObjectTypeItem { create ( features : global ); with draft; }
+
+}
+
+define behavior for ZFI_I_OBJTYPEITEM alias ObjectTypeItem ##UNMAPPED_FIELD
+persistent table ZFI_T_OBJ_TYPE_I
+draft table ZFI_T_OBJ_TI_D
+lock dependent by _ObjectTypeSingleton
+authorization dependent by _ObjectTypeSingleton
+{
+  field ( mandatory : create )
+   ItemObjectType;
+
+  field ( readonly )
+   ObjectTypeSingleton,
+   HeaderObjectType;
+
+  field ( readonly : update )
+   ItemObjectType;
+
+  field ( notrigger )
+   ObjectTypeSingleton;
+
+
+  update( features : global );
+  delete( features : global );
+
+  mapping for ZFI_T_OBJ_TYPE_I
+  {
+    HeaderObjectType = HEADER_OBJECT_TYPE;
+    ItemObjectType = ITEM_OBJECT_TYPE;
+    MainAccount = MAIN_ACCOUNT;
+    CostAccount = COST_ACCOUNT;
+    DocumentType = DOCUMENT_TYPE;
+  }
+
+  association _ObjectTypeSingleton { with draft; }
+  association _ObjectTypeHeader { with draft; }
+
+}

@@ -1,0 +1,58 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Nesne Türü Kalemi', 
+    typeNamePlural: 'Nesne Türü Kalemi', 
+    title: {
+      type: #STANDARD, 
+      label: 'Kalemler', 
+      value: 'ItemObjectType'
+    }
+  }
+}
+annotate view ZFI_I_OBJTYPEITEM with
+{
+  @UI.identification: [ {
+    position: 1 
+  } ]
+  @UI.lineItem: [ {
+    position: 1 
+  } ]
+  @UI.facet: [ {
+    id: 'ZFI_I_OBJTYPEITEM', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Kalemler', 
+    position: 1 
+  } ]
+  ItemObjectType;
+  
+  @UI.identification: [ {
+    position: 2 ,
+    label: 'Ana Hesap'
+  } ]
+  @UI.lineItem: [ {
+    position: 2,
+    label: 'Ana Hesap' 
+  } ]
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZFI_I_GLACCOUNT', element: 'GLAccount'} }]
+  MainAccount;
+  @UI.identification: [ {
+    position: 3,
+    label: 'Gider Hesabı' 
+  } ]
+  @UI.lineItem: [ {
+    position: 3,
+    label: 'Gider Hesabı' 
+  } ]
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZFI_I_GLACCOUNT', element: 'GLAccount'} }]
+  CostAccount;
+  @UI.identification: [ {
+    position: 4
+  } ]
+  @UI.lineItem: [ {
+    position: 4
+  } ]
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'I_AccountingDocumentType', element: 'AccountingDocumentType'} }]   
+  DocumentType;
+}

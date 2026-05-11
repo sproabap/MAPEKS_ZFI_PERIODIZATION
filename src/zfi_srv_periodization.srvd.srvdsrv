@@ -1,0 +1,6 @@
+@EndUserText.label: 'Dönemselleştirme Programı Servisi'
+define service ZFI_SRV_PERIODIZATION {
+  expose ZFI_I_PERIOD_H;
+  expose ZFI_I_PERIOD_I;
+  expose ZFI_I_PERIOD_S;
+}

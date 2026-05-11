@@ -1,0 +1,5 @@
+@MappingRole: true
+define role ZFI_I_OBJTYPEHEADER {
+  grant select on ZFI_I_OBJTYPEHEADER
+  where ( ) = ASPECT pfcg_auth ( 'S_TABU_NAM', ACTVT = '03', TABLE = 'ZFI_I_OBJTYPEHEADER' );
+}

@@ -1,0 +1,49 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Nesne Türü Bakım Tablosu bakımını yap",
+    "originalLanguage": "tr",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "serviceConfiguration": {
+    "serviceBinding": "ZFI_SRV_OBJTYPE_V4",
+    "serviceName": "ZFI_SRV_OBJTYPE_V4",
+    "serviceVersion": "0001",
+    "rootEntitySet": "ObjectTypeSingleton",
+    "name": "Nesne Türü Bakım Tablosu",
+    "transportObject": "",
+    "configurationGroup": "",
+    "skipRootEntity": true,
+    "enableFileUpload": false
+  },
+  "appConfiguration": {
+    "listReport": {},
+    "objectPages": [
+      {
+        "entitySet": "ObjectTypeSingleton",
+        "variantManagement": "control"
+      }
+    ],
+    "tableSettings": [
+      {
+        "entitySet": "ObjectTypeHeader",
+        "tableType": "gridTable",
+        "selectAll": true,
+        "rowCountMode": "auto",
+        "frozenColumnCount": 1,
+        "creationModeName": "inlineCreationRows",
+        "createAtEnd": true,
+        "widthIncludingColumnHeader": true
+      },
+      {
+        "entitySet": "ObjectTypeItem",
+        "tableType": "gridTable",
+        "selectAll": true,
+        "frozenColumnCount": 1,
+        "creationModeName": "inlineCreationRows",
+        "createAtEnd": true,
+        "widthIncludingColumnHeader": true
+      }
+    ]
+  }
+}

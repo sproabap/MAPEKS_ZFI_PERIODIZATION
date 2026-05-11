@@ -1,0 +1,6 @@
+@ObjectModel.leadingEntity.name: 'ZFI_I_OBJTYPE_SNG'
+define service ZFI_SRV_OBJTYPE_V4 {
+  expose ZFI_I_OBJTYPE_SNG as ObjectTypeSingleton;
+  expose ZFI_I_OBJTYPEHEADER as ObjectTypeHeader;
+  expose ZFI_I_OBJTYPEITEM as ObjectTypeItem;
+}

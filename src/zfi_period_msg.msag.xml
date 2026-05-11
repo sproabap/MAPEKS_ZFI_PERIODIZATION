@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+    <MASTERLANG>T</MASTERLANG>
+    <STEXT>Dönemselleştirme Programı Mesaj Sınıfı</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>000</MSGNR>
+     <TEXT>Geçerli bir şirket kodu girin.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>Geçerli bir satıcı girin.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>Geçerli bir nesne türü girin.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>Metin alanı boş olamaz.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>(Kalem : &amp;) Tutar alanı boş olamaz.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>(Kalem : &amp;) Geçerli bir masraf yeri girin.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>(Kalem : &amp;) Geçerli bir gider hesabı girin.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>007</MSGNR>
+     <TEXT>(Kalem : &amp;) Geçerli bir ölçü birimi girin.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>008</MSGNR>
+     <TEXT>(Kalem : &amp;) Geçerli bir ana hesap girin.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>009</MSGNR>
+     <TEXT>(Kalem : &amp;) Binek araç kısıtlaması seçili değilse KKEG hesabı boş olmalı.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>010</MSGNR>
+     <TEXT>(Kalem : &amp;) Binek araç kısıtlaması seçiliyse KKEG hesabı dolu olmalı.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>011</MSGNR>
+     <TEXT>(Kalem : &amp;) Geçerli bir KKEG hesabı girin.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>012</MSGNR>
+     <TEXT>(Kalem : &amp;) Geçerli bir nesne kalem türü girin.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>013</MSGNR>
+     <TEXT>(Kalem : &amp;) Bitiş tarihi boş olamaz.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>014</MSGNR>
+     <TEXT>(Kalem : &amp;) Bitiş tarihi, başlangıç tarihinden önce olamaz.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>015</MSGNR>
+     <TEXT>(Kalem : &amp;) Başlangıç tarihi boş olamaz.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>016</MSGNR>
+     <TEXT>(Kalem : &amp;) Başlangıç tarihi, bitiş tarihinden sonra olamaz.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>017</MSGNR>
+     <TEXT>Kalem simüle edildi.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>018</MSGNR>
+     <TEXT>(Kalem : &amp;) Geçerli bir belge türü girin.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>019</MSGNR>
+     <TEXT>&amp; dönemselleştirme tarihli &amp; nesne numarası (&amp;) zaten muhasebeleşti.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>020</MSGNR>
+     <TEXT>&amp; dönemselleştirme tarihli &amp; nesne numarası (&amp;) askıya alındı.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>021</MSGNR>
+     <TEXT>(Kalem: &amp;) Bitiş tarihi, son işlem yapılan belge döneminden önce olamaz.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>022</MSGNR>
+     <TEXT>&amp;-&amp;-&amp; muhasebeleştirilemez. Muhasebeleşmemiş önceki dönemleri de seçin.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>023</MSGNR>
+     <TEXT>&amp; dönemselleştirme tarihli &amp; nesne numarası (&amp;) henüz muhasebeleşmedi.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>024</MSGNR>
+     <TEXT>&amp;-&amp;-&amp; ters kayıt alınamaz. Muhasebeleşmiş sonraki dönemleri de seçin.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>025</MSGNR>
+     <TEXT>(Kalem : &amp;) Ölçü birimi TRY için döviz kur farkı işaretli olamaz.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>026</MSGNR>
+     <TEXT>(Kalem : &amp;) Başlangıç tarihi ve para birimi için uygun kur bulunamadı.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>027</MSGNR>
+     <TEXT>Nesne başlatıldı.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>028</MSGNR>
+     <TEXT>Nesne askıya alındı.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>029</MSGNR>
+     <TEXT>Hesap alanı zorunludur.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>030</MSGNR>
+     <TEXT>Belge türü zorunludur.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>031</MSGNR>
+     <TEXT>Belge ve kayıt tarihi zorunludur.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>032</MSGNR>
+     <TEXT>Nesne iptal edildi.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>T</SPRSL>
+     <ARBGB>ZFI_PERIOD_MSG</ARBGB>
+     <MSGNR>033</MSGNR>
+     <TEXT>(Kalem : &amp;) Hesaplama seçeneği dolu olmalıdır.</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

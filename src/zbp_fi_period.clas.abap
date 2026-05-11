@@ -1,0 +1,9 @@
+CLASS zbp_fi_period DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zfi_i_period_h.
+protected section.
+private section.
+ENDCLASS.
+
+
+
+CLASS ZBP_FI_PERIOD IMPLEMENTATION.
+ENDCLASS.

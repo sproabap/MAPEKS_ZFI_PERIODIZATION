@@ -1,0 +1,4 @@
+@EndUserText.label: 'Dönemselleştirme Gider Kaydı Servisi'
+define service ZFI_SRV_PERIOD_RECORD {
+  expose ZFI_I_PERIOD_RECORD;
+}

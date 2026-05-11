@@ -1,0 +1,35 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "Nesne Türü Bakımı",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Nesne Türü Bakımı"
+  },
+  "ui5AppDetails": {
+    "appId": "zfiobjtype.zfiobjtype"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_7C1F5AE98BEF41A31033DBE26902867D14EF97A8_TM",
+    "semanticObject": "zfi_objtype",
+    "action": "maintenance",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_7C1F5AE98BEF41A31033DBE26902867D14EF97A8_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Nesne Türü Bakımı",
+        "subtitle": "Nesne Türü Bakımı"
+      }
+    }
+  ]
+}

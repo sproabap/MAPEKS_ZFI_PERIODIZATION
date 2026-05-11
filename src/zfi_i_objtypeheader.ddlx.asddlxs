@@ -1,0 +1,52 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Nesne Türü', 
+    typeNamePlural: 'Nesne Türü',
+    title: {
+      type: #STANDARD, 
+      label: 'Genel Bilgiler', 
+      value: 'HeaderObjectType'
+    } 
+  }
+}
+annotate view ZFI_I_OBJTYPEHEADER with
+{
+  @UI.identification: [ {
+    position: 1 
+  } ]
+  @UI.lineItem: [ {
+    position: 1 
+  } ]
+  @UI.facet: [ {
+    id: 'ZFI_I_OBJTYPEHEADER', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Genel Bilgiler', 
+    position: 1 
+  }, 
+  {
+    id: 'ZFI_I_OBJTYPEITEM', 
+    type: #LINEITEM_REFERENCE, 
+    label: 'Kalemler', 
+    position: 2 , 
+    targetElement: '_ObjectTypeItem'
+  } ]
+  HeaderObjectType;
+  
+  @UI.identification: [ {
+    position: 2 
+  } ]
+  @UI.lineItem: [ {
+    position: 2 
+  } ]
+  ObjectTypeText;
+
+  @UI.identification: [ {
+    position: 3 
+  } ]
+  @UI.lineItem: [ {
+    position: 3 
+  } ]
+  NumberRangeNo;
+}
